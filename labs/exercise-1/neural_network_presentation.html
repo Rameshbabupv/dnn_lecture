@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Journey - Interactive Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            position: relative;
+            min-height: 80vh;
+        }
+
+        .slide {
+            display: none;
+            text-align: center;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #4a47a3;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #6c63ff;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .emoji {
+            font-size: 3em;
+            margin: 10px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .neural-network {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .layer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .layer-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .neurons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .neuron {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .neuron:hover {
+            transform: scale(1.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .input-neuron {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+        }
+
+        .hidden-neuron {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        }
+
+        .output-neuron {
+            background: linear-gradient(45deg, #45b7d1, #96c93d);
+        }
+
+        .connection {
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, #ddd, #999);
+            margin: 0 20px;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .data-flow {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffeb3b;
+            border-radius: 50%;
+            animation: dataFlow 3s infinite;
+        }
+
+        @keyframes dataFlow {
+            0% { top: 0; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .big-number {
+            font-size: 4em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            margin: 20px 0;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px;
+            display: inline-block;
+            min-width: 200px;
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: perspective(1000px) rotateY(5deg) scale(1.05);
+        }
+
+        .relu-demo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .number-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            transition: all 0.5s ease;
+        }
+
+        .negative {
+            background: linear-gradient(45deg, #ff4757, #c44569);
+        }
+
+        .positive {
+            background: linear-gradient(45deg, #2ed573, #1e90ff);
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #ffa502;
+            animation: moveRight 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveRight {
+            from { transform: translateX(-5px); }
+            to { transform: translateX(5px); }
+        }
+
+        .softmax-demo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .probability-bar {
+            width: 300px;
+            height: 40px;
+            background: #ecf0f1;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            margin: 10px;
+        }
+
+        .prob-fill {
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 2s ease;
+        }
+
+        .cat-prob { background: linear-gradient(45deg, #ff6b6b, #ee5a52); }
+        .dog-prob { background: linear-gradient(45deg, #4ecdc4, #44a08d); }
+        .bird-prob { background: linear-gradient(45deg, #45b7d1, #96c93d); }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-next {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-prev {
+            background: linear-gradient(45deg, #ffa502, #ff6348);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #ecf0f1;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .step-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .pixel-grid {
+            display: grid;
+            grid-template-columns: repeat(28, 8px);
+            grid-template-rows: repeat(28, 8px);
+            gap: 1px;
+            justify-content: center;
+            margin: 20px auto;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+        }
+
+        .pixel {
+            width: 8px;
+            height: 8px;
+            background: #ddd;
+            border-radius: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .pixel.active {
+            background: #333;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                width: 98%;
+            }
+            
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            
+            .neural-network {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .controls {
+                bottom: 15px;
+                right: 15px;
+                left: 15px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="step-counter">
+            Step <span id="current-step">1</span> of <span id="total-steps">8</span>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+
+        <!-- Slide 1: Introduction -->
+        <div class="slide active">
+            <h1>🧠 Welcome to Neural Network School! 🎓</h1>
+            <div class="emoji">🌟</div>
+            <h2>Let's Build a Computer Brain Together!</h2>
+            <p style="font-size: 1.3em; color: #555; margin: 20px 0;">
+                We're going to learn how computers recognize handwritten numbers (like 0-9) 
+                by building a special "brain" called a neural network!
+            </p>
+            <div class="feature-box">
+                <h3>🎯 What We'll Learn</h3>
+                <p>✨ How 784 pixels become smart decisions<br>
+                🔢 The magic of ReLU and Softmax<br>
+                🏫 Building our computer school!</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide">
+            <h1>📝 The Challenge: Reading Numbers!</h1>
+            <h2>From Pixels to Recognition</h2>
+            
+            <div class="pixel-grid" id="digit-display">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            
+            <div class="big-number">784</div>
+            <p style="font-size: 1.2em; color: #555;">
+                Each handwritten digit is made of <strong>28 × 28 = 784 tiny squares (pixels)</strong><br>
+                Our computer needs to look at all 784 pixels and decide: "Is this a 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9?"
+            </p>
+            
+            <div class="feature-box">
+                <h3>🤔 The Challenge</h3>
+                <p>How do we turn 784 numbers into one smart answer?</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Neural Network Overview -->
+        <div class="slide">
+            <h1>🏗️ Building Our Computer School!</h1>
+            <h2>The Complete Neural Network</h2>
+            
+            <div class="neural-network">
+                <div class="layer">
+                    <div class="layer-title">Input Layer<br>📥 (784 pixels)</div>
+                    <div class="neurons">
+                        <div class="neuron input-neuron">P1</div>
+                        <div class="neuron input-neuron">P2</div>
+                        <div class="neuron input-neuron">P3</div>
+                        <div style="color: #666;">⋮</div>
+                        <div class="neuron input-neuron">784</div>
+                    </div>
+                </div>
+                
+                <div class="connection">
+                    <div class="data-flow"></div>
+                </div>
+                
+                <div class="layer">
+                    <div class="layer-title">Hidden Layer 1<br>🧠 (128 neurons)</div>
+                    <div class="neurons">
+                        <div class="neuron hidden-neuron">N1</div>
+                        <div class="neuron hidden-neuron">N2</div>
+                        <div class="neuron hidden-neuron">N3</div>
+                        <div style="color: #666;">⋮</div>
+                        <div class="neuron hidden-neuron">128</div>
+                    </div>
+                </div>
+                
+                <div class="connection">
+                    <div class="data-flow"></div>
+                </div>
+                
+                <div class="layer">
+                    <div class="layer-title">Hidden Layer 2<br>🎯 (64 neurons)</div>
+                    <div class="neurons">
+                        <div class="neuron hidden-neuron">N1</div>
+                        <div class="neuron hidden-neuron">N2</div>
+                        <div class="neuron hidden-neuron">N3</div>
+                        <div style="color: #666;">⋮</div>
+                        <div class="neuron hidden-neuron">64</div>
+                    </div>
+                </div>
+                
+                <div class="connection">
+                    <div class="data-flow"></div>
+                </div>
+                
+                <div class="layer">
+                    <div class="layer-title">Output Layer<br>📤 (10 classes)</div>
+                    <div class="neurons">
+                        <div class="neuron output-neuron">0</div>
+                        <div class="neuron output-neuron">1</div>
+                        <div class="neuron output-neuron">2</div>
+                        <div style="color: #666;">⋮</div>
+                        <div class="neuron output-neuron">9</div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.2em; color: #555;">
+                <strong>784 → 128 → 64 → 10</strong><br>
+                Like a funnel: lots of details → patterns → smart decisions!
+            </p>
+        </div>
+
+        <!-- Slide 4: First Dense Layer -->
+        <div class="slide">
+            <h1>🎓 First Classroom: 128 Students!</h1>
+            <h2>tf.keras.layers.Dense(128, activation='relu', input_shape=(784,))</h2>
+            
+            <div class="feature-box">
+                <h3>👥 What's Happening?</h3>
+                <p><strong>128 smart students</strong> each look at ALL 784 pixels<br>
+                Each student specializes in finding different patterns!</p>
+            </div>
+            
+            <div style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
+                <div class="feature-box" style="background: linear-gradient(45deg, #ff6b6b, #ee5a52);">
+                    <h4>Student 1 says:</h4>
+                    <p>"I see curved lines!"</p>
+                </div>
+                <div class="feature-box" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);">
+                    <h4>Student 2 says:</h4>
+                    <p>"I see straight lines!"</p>
+                </div>
+                <div class="feature-box" style="background: linear-gradient(45deg, #45b7d1, #96c93d);">
+                    <h4>Student 3 says:</h4>
+                    <p>"I see corners!"</p>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.1em; color: #555;">
+                Each of the 128 neurons connects to ALL 784 input pixels.<br>
+                That's <strong>128 × 784 = 100,352 connections!</strong> 🤯
+            </p>
+        </div>
+
+        <!-- Slide 5: ReLU Activation -->
+        <div class="slide">
+            <h1>😊 ReLU: The Happiness Filter!</h1>
+            <h2>activation='relu' - Only Positive Vibes! ✨</h2>
+            
+            <div class="relu-demo">
+                <div class="number-box negative">-3</div>
+                <div class="number-box negative">-1</div>
+                <div class="number-box positive">5</div>
+                <div class="number-box positive">8</div>
+                
+                <div class="arrow">➡️</div>
+                
+                <div class="number-box" style="background: #95a5a6;">0</div>
+                <div class="number-box" style="background: #95a5a6;">0</div>
+                <div class="number-box positive">5</div>
+                <div class="number-box positive">8</div>
+            </div>
+            
+            <div class="feature-box">
+                <h3>🚪 ReLU is like a bouncer:</h3>
+                <p>✅ Positive numbers: "Come on in!"<br>
+                ❌ Negative numbers: "Sorry, no entry!"<br>
+                🎯 Result: Only confident, positive predictions move forward!</p>
+            </div>
+            
+            <p style="font-size: 1.2em; color: #555; margin-top: 20px;">
+                This helps our network focus on <strong>strong, confident signals</strong> and ignore weak, uncertain ones!
+            </p>
+        </div>
+
+        <!-- Slide 6: Second Dense Layer -->
+        <div class="slide">
+            <h1>🎯 Second Classroom: 64 Advanced Students!</h1>
+            <h2>tf.keras.layers.Dense(64, activation='relu')</h2>
+            
+            <div style="display: flex; justify-content: center; align-items: center; margin: 30px 0;">
+                <div class="feature-box" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);">
+                    <div class="big-number" style="font-size: 2em; margin: 10px 0;">128</div>
+                    <p>Basic patterns from<br>first layer</p>
+                </div>
+                
+                <div class="arrow" style="margin: 0 30px;">➡️</div>
+                
+                <div class="feature-box" style="background: linear-gradient(45deg, #45b7d1, #96c93d);">
+                    <div class="big-number" style="font-size: 2em; margin: 10px 0;">64</div>
+                    <p>Complex patterns<br>and combinations</p>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
+                <div class="feature-box" style="background: linear-gradient(45deg, #667eea, #764ba2);">
+                    <h4>Advanced Student 1:</h4>
+                    <p>"Curves + corners = maybe number 8!"</p>
+                </div>
+                <div class="feature-box" style="background: linear-gradient(45deg, #f093fb, #f5576c);">
+                    <h4>Advanced Student 2:</h4>
+                    <p>"Straight lines + no curves = maybe number 1!"</p>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.1em; color: #555;">
+                <strong>Why fewer neurons?</strong> We're getting smarter! We need fewer, more specialized detectors for complex patterns.
+            </p>
+        </div>
+
+        <!-- Slide 7: Output Layer with Softmax -->
+        <div class="slide">
+            <h1>🍕 Softmax: The Probability Pizza!</h1>
+            <h2>tf.keras.layers.Dense(10, activation='softmax')</h2>
+            
+            <div class="softmax-demo">
+                <div style="width: 100%;">
+                    <div class="probability-bar">
+                        <div class="prob-fill cat-prob" style="width: 70%;">70% - It's a "3"!</div>
+                    </div>
+                    <div class="probability-bar">
+                        <div class="prob-fill dog-prob" style="width: 20%;">20% - Maybe an "8"?</div>
+                    </div>
+                    <div class="probability-bar">
+                        <div class="prob-fill bird-prob" style="width: 10%;">10% - Could be "5"?</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-box">
+                <h3>🎯 Softmax Magic:</h3>
+                <p>✨ Converts raw scores into percentages<br>
+                📊 All percentages add up to 100%<br>
+                🏆 Highest percentage wins!</p>
+            </div>
+            
+            <div style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
+                <div class="neuron output-neuron" style="width: 60px; height: 60px; font-size: 1em;">0<br>1%</div>
+                <div class="neuron output-neuron" style="width: 60px; height: 60px; font-size: 1em;">1<br>2%</div>
+                <div class="neuron output-neuron" style="width: 60px; height: 60px; font-size: 1em; background: linear-gradient(45deg, #ff6b6b, #ee5a52);">3<br>70%</div>
+                <div class="neuron output-neuron" style="width: 60px; height: 60px; font-size: 1em;">4<br>3%</div>
+                <div class="neuron output-neuron" style="width: 60px; height: 60px; font-size: 1em;">5<br>10%</div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Complete Journey -->
+        <div class="slide">
+            <h1>🚀 The Complete Journey!</h1>
+            <h2>From Pixels to Prediction in 4 Steps!</h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 20px; margin: 30px 0;">
+                <div class="feature-box" style="background: linear-gradient(45deg, #ff6b6b, #ee5a52);">
+                    <h3>Step 1: Input (784 pixels)</h3>
+                    <p>"Here's a picture with 784 tiny squares!"</p>
+                </div>
+                
+                <div class="arrow" style="text-align: center;">⬇️</div>
+                
+                <div class="feature-box" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);">
+                    <h3>Step 2: First Dense Layer (128 neurons + ReLU)</h3>
+                    <p>"I see basic shapes: lines, curves, corners!"</p>
+                </div>
+                
+                <div class="arrow" style="text-align: center;">⬇️</div>
+                
+                <div class="feature-box" style="background: linear-gradient(45deg, #45b7d1, #96c93d);">
+                    <h3>Step 3: Second Dense Layer (64 neurons + ReLU)</h3>
+                    <p>"I see complex patterns: number-like shapes!"</p>
+                </div>
+                
+                <div class="arrow" style="text-align: center;">⬇️</div>
+                
+                <div class="feature-box" style="background: linear-gradient(45deg, #667eea, #764ba2);">
+                    <h3>Step 4: Output Layer (10 neurons + Softmax)</h3>
+                    <p>"I'm 70% sure this is the number 3!"</p>
+                </div>
+            </div>
+            
+            <div class="emoji">🎉</div>
+            <h2 style="color: #4a47a3;">Congratulations! You now understand neural networks! 🧠✨</h2>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn btn-prev" onclick="previousSlide()" id="prevBtn">⬅️ Previous</button>
+        <button class="btn btn-next" onclick="nextSlide()" id="nextBtn">Next ➡️</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        
+        document.getElementById('total-steps').textContent = totalSlides;
+        
+        function updateSlide() {
+            // Hide all slides
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show current slide
+            document.querySelectorAll('.slide')[currentSlide].classList.add('active');
+            
+            // Update progress bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+            
+            // Update step counter
+            document.getElementById('current-step').textContent = currentSlide + 1;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            
+            if (currentSlide === totalSlides - 1) {
+                document.getElementById('nextBtn').textContent = '🎉 Finished!';
+            } else {
+                document.getElementById('nextBtn').textContent = 'Next ➡️';
+            }
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+                
+                // Special animations for certain slides
+                if (currentSlide === 1) {
+                    generatePixelArt();
+                }
+            }
+        }
+        
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+        
+        // Generate a simple digit pattern for slide 2
+        function generatePixelArt() {
+            const grid = document.getElementById('digit-display');
+            grid.innerHTML = '';
+            
+            // Create 784 pixels (28x28)
+            for (let i = 0; i < 784; i++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                grid.appendChild(pixel);
+            }
+            
+            // Simple pattern for number "3"
+            const numberThreePattern = [
+                147, 148, 149, 150, 151, 152,  // top line
+                179, 180, 181, 182, 183, 184,  // second line
+                207, 212,                       // sides
+                235, 240,                       // sides
+                263, 264, 265, 266, 267,       // middle line
+                291, 296,                       // sides
+                319, 324,                       // sides
+                347, 348, 349, 350, 351, 352   // bottom line
+            ];
+            
+            setTimeout(() => {
+                numberThreePattern.forEach((index, i) => {
+                    setTimeout(() => {
+                        const pixels = grid.children;
+                        if (pixels[index]) {
+                            pixels[index].classList.add('active');
+                        }
+                    }, i * 50);
+                });
+            }, 500);
+        }
+        
+        // Initialize
+        updateSlide();
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+        
+        // Add some interactive hover effects
+        document.querySelectorAll('.neuron').forEach(neuron => {
+            neuron.addEventListener('click', function() {
+                this.style.transform = 'scale(1.3) rotate(360deg)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

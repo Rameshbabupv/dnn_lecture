@@ -1,0 +1,17 @@
+# Weekly Plans Structure
+
+- week1-module1-intro (Introduction to Deep Learning)
+- week2-module1-mlp (Multilayer Perceptron)
+- week3-module1-activation (Activation Functions)
+- week4-module2-optimization (Gradient Descent - your current week)
+- week5-module2-gradients (Vanishing/Exploding Gradients)
+- week6-module2-regularization (Regularization Techniques)
+- week7-module3-image-processing (Image Enhancement)
+- week8-module3-segmentation (Image Segmentation)
+- week9-module3-features (Feature Extraction)
+- week10-module4-cnn-basics (CNN Fundamentals)
+- week11-module4-cnn-layers (CNN Layers)
+- week12-module4-transfer-learning (Transfer Learning)
+- week13-module5-object-localization (Object Localization)
+- week14-module5-detection-models (Detection Models)
+- week15-module5-rcnn (R-CNN Family)

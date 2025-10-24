@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Gates Linear Separability Visualization</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .question-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(116, 185, 255, 0.3);
+        }
+
+        .question-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        .gates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .gate-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gate-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .gate-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+        }
+
+        .gate-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .gate-title h3 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .gate-title .separability {
+            font-size: 0.9em;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .linearly-separable {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .non-linearly-separable {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .graph-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 20px auto;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .graph {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, #f0f0f0 1px, transparent 1px),
+                linear-gradient(0deg, #f0f0f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Coordinate axes */
+        .graph::before, .graph::after {
+            content: '';
+            position: absolute;
+            background: #333;
+        }
+
+        .graph::before { /* Y-axis */
+            left: 60px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+        }
+
+        .graph::after { /* X-axis */
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+        }
+
+        .point {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .point:hover {
+            transform: scale(1.3);
+            z-index: 10;
+        }
+
+        .point.output-0 {
+            background: #e74c3c;
+            border-color: #c0392b;
+        }
+
+        .point.output-1 {
+            background: #27ae60;
+            border-color: #229954;
+        }
+
+        .separating-line {
+            position: absolute;
+            background: #3498db;
+            transform-origin: center;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .line-and {
+            width: 200px;
+            height: 3px;
+            top: 140px;
+            left: 45px;
+            transform: rotate(45deg);
+        }
+
+        .line-or {
+            width: 200px;
+            height: 3px;
+            top: 200px;
+            left: 45px;
+            transform: rotate(-20deg);
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #2c3e50;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+            white-space: nowrap;
+        }
+
+        .point:hover .tooltip {
+            opacity: 1;
+        }
+
+        .truth-table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 0.9em;
+        }
+
+        .truth-table th,
+        .truth-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .truth-table th {
+            background: #34495e;
+            color: white;
+        }
+
+        .truth-table td.output-0-cell {
+            background: #ffebee;
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        .truth-table td.output-1-cell {
+            background: #e8f5e8;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .axis-labels {
+            position: absolute;
+            font-size: 12px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .x-label {
+            bottom: 35px;
+            right: 10px;
+        }
+
+        .y-label {
+            top: 10px;
+            left: 35px;
+        }
+
+        .coordinates {
+            position: absolute;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .coord-00 { bottom: 45px; left: 45px; }
+        .coord-01 { top: 45px; left: 45px; }
+        .coord-10 { bottom: 45px; right: 45px; }
+        .coord-11 { top: 45px; right: 45px; }
+
+        .explanation {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .explanation h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+
+        .explanation ul {
+            color: #856404;
+        }
+
+        .explanation li {
+            margin-bottom: 8px;
+        }
+
+        .interactive-note {
+            background: #e1f5fe;
+            border-left: 4px solid #03a9f4;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .interactive-note strong {
+            color: #0277bd;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .gates-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .graph-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔢 Logic Gates Linear Separability</h1>
+            <p>Interactive Visualization for Understanding Neural Network Fundamentals</p>
+        </div>
+
+        <div class="question-box">
+            <h3>🎯 Question: Can you identify which gates can be separated by a straight line in 2D space?</h3>
+            <p><strong>Hint:</strong> Look at the points (0,0), (0,1), (1,0), (1,1) plotted below. Try to imagine drawing a line that separates the red points (output=0) from the green points (output=1) for each gate.</p>
+        </div>
+
+        <div class="interactive-note">
+            <strong>🖱️ Interactive:</strong> Hover over the points to see their coordinates and output values!
+        </div>
+
+        <div class="gates-container">
+            <!-- AND Gate -->
+            <div class="gate-section">
+                <div class="gate-title">
+                    <h3>AND Gate</h3>
+                    <div class="separability linearly-separable">✅ Linearly Separable</div>
+                </div>
+                
+                <div class="graph-container">
+                    <div class="graph">
+                        <!-- Separating line for AND gate -->
+                        <div class="separating-line line-and"></div>
+                        
+                        <!-- Points for AND gate -->
+                        <div class="point output-0" style="bottom: 45px; left: 45px;">
+                            <div class="tooltip">Input: (0,0) → Output: 0</div>
+                        </div>
+                        <div class="point output-0" style="top: 45px; left: 45px;">
+                            <div class="tooltip">Input: (0,1) → Output: 0</div>
+                        </div>
+                        <div class="point output-0" style="bottom: 45px; right: 45px;">
+                            <div class="tooltip">Input: (1,0) → Output: 0</div>
+                        </div>
+                        <div class="point output-1" style="top: 45px; right: 45px;">
+                            <div class="tooltip">Input: (1,1) → Output: 1</div>
+                        </div>
+                        
+                        <!-- Axis labels -->
+                        <div class="axis-labels x-label">Input A →</div>
+                        <div class="axis-labels y-label">Input B ↑</div>
+                        
+                        <!-- Coordinates -->
+                        <div class="coordinates coord-00">(0,0)</div>
+                        <div class="coordinates coord-01">(0,1)</div>
+                        <div class="coordinates coord-10">(1,0)</div>
+                        <div class="coordinates coord-11">(1,1)</div>
+                    </div>
+                </div>
+
+                <table class="truth-table">
+                    <tr>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>AND</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="output-0-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td class="output-0-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td class="output-0-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="output-1-cell">1</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- OR Gate -->
+            <div class="gate-section">
+                <div class="gate-title">
+                    <h3>OR Gate</h3>
+                    <div class="separability linearly-separable">✅ Linearly Separable</div>
+                </div>
+                
+                <div class="graph-container">
+                    <div class="graph">
+                        <!-- Separating line for OR gate -->
+                        <div class="separating-line line-or"></div>
+                        
+                        <!-- Points for OR gate -->
+                        <div class="point output-0" style="bottom: 45px; left: 45px;">
+                            <div class="tooltip">Input: (0,0) → Output: 0</div>
+                        </div>
+                        <div class="point output-1" style="top: 45px; left: 45px;">
+                            <div class="tooltip">Input: (0,1) → Output: 1</div>
+                        </div>
+                        <div class="point output-1" style="bottom: 45px; right: 45px;">
+                            <div class="tooltip">Input: (1,0) → Output: 1</div>
+                        </div>
+                        <div class="point output-1" style="top: 45px; right: 45px;">
+                            <div class="tooltip">Input: (1,1) → Output: 1</div>
+                        </div>
+                        
+                        <!-- Axis labels -->
+                        <div class="axis-labels x-label">Input A →</div>
+                        <div class="axis-labels y-label">Input B ↑</div>
+                        
+                        <!-- Coordinates -->
+                        <div class="coordinates coord-00">(0,0)</div>
+                        <div class="coordinates coord-01">(0,1)</div>
+                        <div class="coordinates coord-10">(1,0)</div>
+                        <div class="coordinates coord-11">(1,1)</div>
+                    </div>
+                </div>
+
+                <table class="truth-table">
+                    <tr>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>OR</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="output-0-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td class="output-1-cell">1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td class="output-1-cell">1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="output-1-cell">1</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- XOR Gate -->
+            <div class="gate-section">
+                <div class="gate-title">
+                    <h3>XOR Gate</h3>
+                    <div class="separability non-linearly-separable">❌ NOT Linearly Separable</div>
+                </div>
+                
+                <div class="graph-container">
+                    <div class="graph">
+                        <!-- No separating line for XOR - it's impossible! -->
+                        
+                        <!-- Points for XOR gate -->
+                        <div class="point output-0" style="bottom: 45px; left: 45px;">
+                            <div class="tooltip">Input: (0,0) → Output: 0</div>
+                        </div>
+                        <div class="point output-1" style="top: 45px; left: 45px;">
+                            <div class="tooltip">Input: (0,1) → Output: 1</div>
+                        </div>
+                        <div class="point output-1" style="bottom: 45px; right: 45px;">
+                            <div class="tooltip">Input: (1,0) → Output: 1</div>
+                        </div>
+                        <div class="point output-0" style="top: 45px; right: 45px;">
+                            <div class="tooltip">Input: (1,1) → Output: 0</div>
+                        </div>
+                        
+                        <!-- Axis labels -->
+                        <div class="axis-labels x-label">Input A →</div>
+                        <div class="axis-labels y-label">Input B ↑</div>
+                        
+                        <!-- Coordinates -->
+                        <div class="coordinates coord-00">(0,0)</div>
+                        <div class="coordinates coord-01">(0,1)</div>
+                        <div class="coordinates coord-10">(1,0)</div>
+                        <div class="coordinates coord-11">(1,1)</div>
+                    </div>
+                </div>
+
+                <table class="truth-table">
+                    <tr>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>XOR</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="output-0-cell">0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td class="output-1-cell">1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td class="output-1-cell">1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="output-0-cell">0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>🧠 Understanding Linear Separability</h3>
+            <ul>
+                <li><strong>AND Gate:</strong> The blue line successfully separates all red points (output=0) from the green point (output=1). A single-layer perceptron can learn this!</li>
+                <li><strong>OR Gate:</strong> The blue line separates the red point (output=0) from all green points (output=1). Also learnable by a single-layer perceptron!</li>
+                <li><strong>XOR Gate:</strong> No straight line can separate the red points from green points - they form a checkerboard pattern. This requires a multi-layer perceptron with hidden layers!</li>
+            </ul>
+            
+            <h3>🚀 Neural Network Implications</h3>
+            <ul>
+                <li><strong>Linearly Separable Problems (AND, OR):</strong> Can be solved with a single neuron (perceptron)</li>
+                <li><strong>Non-Linearly Separable Problems (XOR):</strong> Require hidden layers to create complex decision boundaries</li>
+                <li><strong>Historical Significance:</strong> The XOR problem was a major criticism of early neural networks until multi-layer perceptrons were developed</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            const points = document.querySelectorAll('.point');
+            
+            points.forEach(point => {
+                point.addEventListener('mouseenter', function() {
+                    this.classList.add('pulse');
+                });
+                
+                point.addEventListener('mouseleave', function() {
+                    this.classList.remove('pulse');
+                });
+            });
+
+            // Add click functionality to show alert with explanation
+            points.forEach(point => {
+                point.addEventListener('click', function() {
+                    const tooltip = this.querySelector('.tooltip');
+                    if (tooltip) {
+                        const message = tooltip.textContent;
+                        const gateType = this.closest('.gate-section').querySelector('h3').textContent;
+                        alert(`${gateType}: ${message}`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

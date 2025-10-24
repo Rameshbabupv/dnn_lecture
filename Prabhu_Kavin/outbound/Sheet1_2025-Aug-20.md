@@ -1,0 +1,50 @@
+| Module | Topic Name                                        | Hours | Method             | Assignment                           | Learning Materials                  | CO              | PO  |     |
+| ------ | ------------------------------------------------- | ----- | ------------------ | ------------------------------------ | ----------------------------------- | --------------- | --- | --- |
+| 1      | Introduction to Deep Learning and Neural Networks | 1     | Lecture            |                                      | Chollet (2021), Ch.1                | CO1             | PO1 |     |
+| 1      | Perceptron and Multi-Layer Perceptron             | 1     | Lecture + Tutorial | T1: Implement basic perceptron       | Chollet (2021), Ch.2                | CO1             | PO1 |     |
+| 1      | Introduction to TensorFlow and Keras              | 1     | Hands-on/Lab       |                                      | Chollet (2021), Ch.3                | CO1             | PO2 |     |
+| 1      | Activation Functions: Sigmoid, ReLU, Softmax      | 1     | Lecture            |                                      | Goodfellow (2016), Ch.6             | CO1             | PO1 |     |
+| 1      | Loss Functions and Performance Metrics            | 1     | Lecture + Tutorial | T3: Compare activation functions     | Chollet (2021), Ch.4                | CO1             | PO1 |     |
+| 1      | Forward and Backward Propagation                  | 1     | Lecture            |                                      | Goodfellow (2016), Ch.8             | CO1             | PO1 |     |
+| 1      | Building First Neural Network with Keras          | 1     | Hands-on/Lab       | T4: Manual backprop implementation   | Chollet (2021), Ch.3                | CO1             | PO2 |     |
+| 1      | Overfitting and Underfitting Concepts             | 1     | Lecture            |                                      | Géron (2019), Ch.4                  | CO1             | PO1 |     |
+| 1      | Model Evaluation and Validation Techniques        | 1     | Lecture + Tutorial | T5: First neural network project     | Géron (2019), Ch.3                  | CO1             | PO2 |     |
+| 1      | Assignment / Activity # 1: Neural Network Basics  | 1     |                    | Assignment                           | T6: Cross-validation implementation | Custom Exercise | CO1 | PO2 |
+| 2      | Gradient Descent and its Variants                 | 1     | Lecture            |                                      | Goodfellow (2016), Ch.8             | CO2             | PO1 |     |
+| 2      | Stochastic Gradient Descent (SGD)                 | 1     | Lecture + Tutorial | T7: SGD vs Adam comparison           | Géron (2019), Ch.11                 | CO2             | PO2 |     |
+| 2      | Advanced Optimizers: Adam, RMSprop, AdaGrad       | 1     | Lecture            |                                      | Goodfellow (2016), Ch.8             | CO2             | PO1 |     |
+| 2      | Regularization Techniques: L1, L2, Dropout        | 1     | Lecture + Tutorial | T8: Optimizer comparison study       | Géron (2019), Ch.11                 | CO2             | PO2 |     |
+| 2      | Batch Normalization and Layer Normalization       | 1     | Lecture            |                                      | Goodfellow (2016), Ch.8             | CO2             | PO1 |     |
+| 2      | Early Stopping and Learning Rate Scheduling       | 1     | Lecture + Tutorial | T9: Regularization implementation    | Chollet (2021), Ch.5                | CO2             | PO2 |     |
+| 2      | Weight Initialization Strategies                  | 1     | Lecture            |                                      | Goodfellow (2016), Ch.8             | CO2             | PO1 |     |
+| 2      | Hyperparameter Tuning Techniques                  | 1     | Lecture + Tutorial | T10: Learning rate scheduling        | Géron (2019), Ch.2                  | CO2             | PO2 |     |
+| 2      | Advanced Training Techniques                      | 1     | Lecture            |                                      | Chollet (2021), Ch.5                | CO2             | PO1 |     |
+| 2      | Assignment / Activity # 2: Optimization Methods   | 1     |                    | Assignment                           | T11: Grid search vs random search   | Custom Exercise | CO2 | PO2 |
+| 3      | Digital Image Fundamentals                        | 1     | Lecture            |                                      | Rosebrock (2017), Ch.1              | CO3             | PO1 |     |
+| 3      | Image Processing with OpenCV                      | 1     | Hands-on/Lab       | T12: OpenCV image operations         | Rosebrock (2017), Ch.2              | CO3             | PO2 |     |
+| 3      | Feature Extraction Techniques                     | 1     | Lecture + Tutorial |                                      | Rosebrock (2017), Ch.4              | CO3             | PO2 |     |
+| 3      | Image Classification using Neural Networks        | 1     | Hands-on/Lab       | T13: Image classifier implementation | Chollet (2021), Ch.8                | CO3             | PO2 |     |
+| 3      | Data Augmentation Techniques                      | 1     | Lecture + Tutorial |                                      | Chollet (2021), Ch.8                | CO3             | PO2 |     |
+| 3      | Working with Image Datasets                       | 1     | Hands-on/Lab       |                                      | Géron (2019), Ch.13                 | CO3             | PO2 |     |
+| 3      | Deep Learning for Computer Vision Introduction    | 1     | Lecture            |                                      | Shanmugamani (2018), Ch.1           | CO3             | PO1 |     |
+| 3      | Image Preprocessing and Normalization             | 1     | Lecture + Tutorial |                                      | Rosebrock (2017), Ch.3              | CO3             | PO2 |     |
+| 3      | Introduction to Convolutional Operations          | 1     | Lecture            |                                      | Goodfellow (2016), Ch.9             | CO3             | PO1 |     |
+| 3      | Assignment / Activity # 3: Image Processing       | 1     |                    | Assignment                           | Custom Image Dataset                | Custom Exercise | CO3 | PO2 |
+| 4      | Convolutional Neural Networks (CNN) Architecture  | 1     | Lecture            |                                      | Chollet (2021), Ch.8                | CO4             | PO1 |     |
+| 4      | Convolution and Pooling Layers                    | 1     | Lecture + Tutorial | T14: Build basic CNN                 | Goodfellow (2016), Ch.9             | CO4             | PO2 |     |
+| 4      | CNN Architectures: LeNet, AlexNet, VGG            | 1     | Lecture            |                                      | Shanmugamani (2018), Ch.3           | CO4             | PO1 |     |
+| 4      | Advanced CNN Architectures: ResNet, DenseNet      | 1     | Lecture            |                                      | Shanmugamani (2018), Ch.4           | CO4             | PO1 |     |
+| 4      | Transfer Learning Concepts and Applications       | 1     | Lecture + Tutorial |                                      | Chollet (2021), Ch.9                | CO4             | PO2 |     |
+| 4      | Pre-trained Models: ImageNet, CIFAR               | 1     | Hands-on/Lab       | T15: Transfer learning project       | Géron (2019), Ch.14                 | CO4             | PO2 |     |
+| 4      | Fine-tuning Strategies                            | 1     | Lecture + Tutorial |                                      | Chollet (2021), Ch.9                | CO4             | PO2 |     |
+| 4      | CNN Visualization and Interpretability            | 1     | Lecture            |                                      | Shanmugamani (2018), Ch.6           | CO4             | PO1 |     |
+| 4      | Practical CNN Implementation                      | 1     | Hands-on/Lab       |                                      | Lab Manual                          | CO4             | PO2 |     |
+| 4      | Assignment / Activity # 4: CNN Architecture       | 1     |                    | Assignment                           | Custom CNN Project                  | Custom Exercise | CO4 | PO2 |
+| 5      | Introduction to Object Detection                  | 1     | Lecture            |                                      | Rosebrock (2017), Ch.12             | CO5             | PO1 |     |
+| 5      | R-CNN Family: R-CNN, Fast R-CNN, Faster R-CNN     | 1     | Lecture            |                                      | Shanmugamani (2018), Ch.8           | CO5             | PO1 |     |
+| 5      | YOLO (You Only Look Once) Architecture            | 1     | Lecture + Tutorial |                                      | Rosebrock (2017), Ch.13             | CO5             | PO2 |     |
+| 5      | SSD (Single Shot Detector) and RetinaNet          | 1     | Lecture            |                                      | Web Documentation                   | CO5             | PO1 |     |
+| 5      | Object Detection Metrics: mAP, IoU                | 1     | Lecture + Tutorial |                                      | Shanmugamani (2018), Ch.9           | CO5             | PO2 |     |
+| 5      | Practical Object Detection Implementation         | 1     | Hands-on/Lab       |                                      | Lab Manual                          | CO5             | PO2 |     |
+| 5      | Advanced Topics: Semantic Segmentation            | 1     | Lecture            |                                      | Shanmugamani (2018), Ch.10          | CO5             | PO1 |     |
+| 5      | Assignment / Activity # 5: Object Detection       | 1     |                    | Assignment                           | Custom Detection Project            | Custom Exercise | CO5 | PO2 |

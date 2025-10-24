@@ -1,0 +1,42 @@
+# Week 5: Gradient Problems & Regularization - Requirements
+# Deep Neural Network Architectures (21CSE558T)
+# Module 2: Optimization and Regularization
+
+# Core Deep Learning Framework
+tensorflow>=2.15.0,<2.17.0  # Stable version with good compatibility
+tensorflow-datasets>=4.9.0
+
+# Scientific Computing
+numpy>=1.23.0,<1.25.0  # Compatible with TF 2.15
+scipy>=1.10.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+
+# Visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+plotly>=5.14.0  # For interactive plots
+
+# Jupyter Environment
+jupyter>=1.0.0
+notebook>=6.5.0
+ipykernel>=6.22.0
+ipywidgets>=8.0.0
+nbformat>=5.8.0
+
+# Utilities
+pandas>=2.0.0
+tqdm>=4.65.0  # Progress bars
+pillow>=9.5.0  # Image processing
+
+# Google Colab Compatibility
+ipython>=8.12.0
+
+# Optional GPU Support (comment out if no GPU)
+# tensorflow-gpu>=2.15.0
+
+# Development Tools (optional)
+black>=23.0.0  # Code formatting
+pylint>=2.17.0  # Code linting
+pytest>=7.3.0  # Testing

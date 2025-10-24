@@ -1,0 +1,33 @@
+name: week5-gradients
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python version
+  - python=3.10
+
+  # Core packages
+  - pip>=23.0
+
+  # Scientific computing
+  - numpy>=1.23.0,<1.25.0
+  - scipy>=1.10.0
+  - pandas>=2.0.0
+
+  # Visualization (from conda)
+  - matplotlib>=3.6.0
+  - seaborn>=0.12.0
+
+  # Jupyter
+  - jupyter>=1.0.0
+  - notebook>=6.5.0
+  - ipykernel>=6.22.0
+
+  # pip packages (TensorFlow works better from pip)
+  - pip:
+    - tensorflow>=2.15.0,<2.17.0
+    - scikit-learn>=1.3.0
+    - plotly>=5.14.0
+    - tqdm>=4.65.0
+    - pillow>=9.5.0
+    - ipywidgets>=8.0.0

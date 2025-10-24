@@ -1,0 +1,10 @@
+{
+	"nodes":[
+		{"id":"4e17cc70063853ba","x":-400,"y":-60,"width":250,"height":60,"type":"text","text":"Podcast \n"},
+		{"id":"c4f5412401ee462b","x":40,"y":-620,"width":1003,"height":835,"type":"text","text":"![[pleas#📋 Quick Reference]]"},
+		{"id":"37f8e31d2e4951b5","x":-60,"y":400,"width":940,"height":80,"type":"text","text":"![[pleas#🚀 Part 1 The Crisis of Manual Features (15 minutes)]]"},
+		{"id":"ff0efd933bd7c195","type":"text","text":"![[pleas#🚀 Part 1 The Crisis of Manual Features (15 minutes)]]","x":900,"y":320,"width":1020,"height":220},
+		{"id":"a40f06009adcd803","x":1529,"y":-102,"width":250,"height":60,"type":"text","text":""}
+	],
+	"edges":[]
+}

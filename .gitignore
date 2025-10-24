@@ -1,0 +1,88 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+env/
+ENV/
+srnenv/
+mnist-env/
+tensorflow_env/
+*/venv/
+*/env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# TensorFlow / ML Models
+*.h5
+*.hdf5
+*.pb
+*.ckpt*
+*.keras
+saved_models/
+checkpoints/
+logs/
+tensorboard/
+
+# Data files (large datasets)
+*.csv
+*.json
+*.pkl
+*.pickle
+*.npy
+*.npz
+data/
+datasets/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.log
+*.tmp
+tmp/
+temp/
+
+# Large reference books (PDFs)
+books/*.pdf
+
+# System files
+Thumbs.db

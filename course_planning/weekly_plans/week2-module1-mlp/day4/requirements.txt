@@ -1,0 +1,16 @@
+# TensorFlow Basic Operations Exercises - Requirements
+# Tutorial T3: Deep Neural Network Architectures
+
+# Core dependencies
+tensorflow>=2.10.0
+numpy>=1.21.0
+
+# Optional dependencies for enhanced functionality
+matplotlib>=3.5.0
+
+# Development dependencies (optional)
+jupyter>=1.0.0
+ipython>=7.0.0
+
+# Installation instructions:
+# pip install -r requirements.txt
