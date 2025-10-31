@@ -358,12 +358,12 @@ model.add(Dense(10, activation='softmax'))  # Only 5,120 parameters!
 
 ### Pooling Comparison Summary
 
-| Pooling Type | Size Change | Parameters | Use Case | Trade-off |
-|-------------|-------------|------------|----------|-----------|
-| **Max** | 28×28 → 14×14 | 0 | Classification (most common) | Loses some information |
-| **Average** | 28×28 → 14×14 | 0 | Smooth features | Keeps noise too |
-| **Global Avg** | 7×7×512 → 512 | 0 | Replace Flatten+Dense | Needs more channels |
-| **Flatten+Dense** | 7×7×512 → 1024 | 25M+ | Old approach | Massive overfitting |
+| Pooling Type      | Size Change    | Parameters | Use Case                     | Trade-off              |
+| ----------------- | -------------- | ---------- | ---------------------------- | ---------------------- |
+| **Max**           | 28×28 → 14×14  | 0          | Classification (most common) | Loses some information |
+| **Average**       | 28×28 → 14×14  | 0          | Smooth features              | Keeps noise too        |
+| **Global Avg**    | 7×7×512 → 512  | 0          | Replace Flatten+Dense        | Needs more channels    |
+| **Flatten+Dense** | 7×7×512 → 1024 | 25M+       | Old approach                 | Massive overfitting    |
 
 **Key Insight:** All pooling operations have ZERO learnable parameters!
 
