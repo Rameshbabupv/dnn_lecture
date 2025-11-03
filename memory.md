@@ -1,6 +1,35 @@
 # Memory - Deep Neural Network Course (21CSE558T)
 
-## Latest Session: October 31, 2025 - CNN Practical Workshop Materials
+## Latest Update: November 2025 Schedule
+
+### Remaining Class Sessions (November 1-21, 2025)
+
+#### Week of Nov 1-3:
+- **Nov-01 Saturday (Do3)**: 8:00 - 9:40 AM (100 minutes)
+- **Nov-03 Monday (Do4)**: 4:00 - 4:40 PM (40 minutes)
+
+#### Week of Nov 7-10:
+- **Nov-07 Friday (Do3)**: 8:00 - 9:40 AM (100 minutes)
+- **Nov-10 Monday (Do4)**: 4:00 - 4:40 PM (40 minutes)
+
+#### Week of Nov 14-17:
+- **Nov-14 Friday (Do3)**: 8:00 - 9:40 AM (100 minutes) - **FT2 TEST (Unit Test 2)**
+- **Nov-17 Monday (Do4)**: 4:00 - 4:40 PM (40 minutes)
+
+#### Final Week:
+- **Nov-21 Friday (Do3)**: 8:00 - 9:40 AM (100 minutes) - **LAST CLASS OF SEMESTER**
+
+### Session Summary:
+- **Total remaining sessions**: 7 (4 × Do3 + 3 × Do4)
+- **Total contact hours**: ~7 hours 40 minutes
+- **Do3 sessions**: 4 sessions @ 100 minutes each = 6 hours 40 minutes
+- **Do4 sessions**: 3 sessions @ 40 minutes each = 2 hours
+- **Critical date**: Nov-14 (Unit Test 2 - FT2)
+- **Semester end**: Nov-21 (Final class)
+
+---
+
+## Recent Session: October 31, 2025 - CNN Practical Workshop Materials
 
 ### What Was Accomplished
 Created **complete 2-day CNN practical session** for Week 11-12 (Module 4: CNNs)
@@ -159,6 +188,7 @@ Current tasks planned:
 
 ---
 
-**Last Updated:** October 31, 2025, 11:50 PM IST
-**Status:** Ready for Saturday November 1, 2025 class
+**Last Updated:** November 1, 2025
+**Status:** November schedule updated - 7 remaining sessions until semester end (Nov 21)
+**Critical Dates:** FT2 Test (Nov 14), Last Class (Nov 21)
 **Git Config:** Using GitHub noreply email for privacy
