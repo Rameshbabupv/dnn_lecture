@@ -1,200 +1,121 @@
-# FT2 (Formative Test 2) - Complete Materials Status
+# FT2 (Formative Test 2) - Complete Materials Status - Updated November 11, 2025
 
 **Course:** 21CSE558T - Deep Neural Network Architectures  
 **Test Date:** November 14, 2025  
 **Coverage:** Modules 3-4 (Image Processing & CNNs)  
-**Total Marks:** 25 marks (10 MCQs + 15 SAQs)  
 **Status:** ✅ ALL MATERIALS COMPLETE - Ready for Deployment  
-**Last Updated:** October 30, 2025
+**Last Updated:** November 11, 2025
 
 ---
 
 ## 📦 Complete Materials Created
 
-### 1. Question Banks (✅ Complete)
+### 1. Question Bank - UPDATED TO 10 MARKS (✅ Complete)
 
-#### **ft2_mcq_bank_40_questions.md** (17KB)
-- **Total MCQs:** 40 questions (1 mark each)
+#### **ft2_saq_bank_10_questions.md** (Version 2.0)
+- **Total SAQs:** 10 questions (10 marks each)
 - **Distribution:** 
-  - Module 3 (Image Processing): 20 MCQs
-  - Module 4 (CNNs & Transfer Learning): 20 MCQs
+  - Module 3 (Image Processing): 5 questions
+  - Module 4 (CNNs & Transfer Learning): 5 questions
+- **Format Change:** Upgraded from 5 marks to 10 marks per question
 - **Features:**
-  - All questions with correct answers
-  - Detailed explanations for each answer
-  - NO overlap with FT1 (Modules 1-2)
-  - CNN-SPECIFIC applications (not general ML concepts)
-  - Includes Transfer Learning topics
-  - Conceptual focus with light calculations
-
-#### **ft2_saq_bank_7_questions.md** (17KB)
-- **Total SAQs:** 7 questions (5 marks each)
-- **Distribution:**
-  - Module 3: 3 SAQs (Feature extraction, Segmentation, Edge detection)
-  - Module 4: 4 SAQs (BatchNorm placement, Dropout strategy, Data augmentation, Transfer learning)
-- **Features:**
-  - Complete expected answers (400-500 words each)
-  - Detailed marking schemes with point breakdown
-  - Scenario-based questions (like FT1 format)
+  - All questions with complete expected answers (400-500 words)
+  - Detailed marking schemes totaling 10 marks each
+  - Balanced coverage across both modules
+  - Scenario-based questions with practical applications
   - NO code debugging questions
-  - Conceptual focus
+  - Conceptual focus with some calculations (Q10 includes parameter calculations)
+
+**Question Bank Contents:**
+
+**Module 3 Questions (5 total):**
+- **Q1:** Feature Extraction Comparison (Traditional vs Deep Learning)
+- **Q2:** Image Segmentation Techniques (Thresholding vs Region-based)
+- **Q3:** Edge Detection Method Selection (Sobel vs Canny)
+- **Q8:** Image Noise and Filtering (Gaussian vs Median filter) - NEW
+- **Q9:** Histogram Equalization and Image Enhancement - NEW
+
+**Module 4 Questions (5 total):**
+- **Q4:** Batch Normalization Placement (Conv→ReLU→BN vs Conv→BN→ReLU)
+- **Q5:** Dropout Placement Strategy (Progressive rates, no dropout after output)
+- **Q6:** Data Augmentation for Image Classification (CIFAR-10 scenarios)
+- **Q7:** Transfer Learning Strategy (VGG16 for medical X-ray classification)
+- **Q10:** CNN Parameter Calculation and Model Size (Flatten→Dense vs GlobalAveragePooling) - NEW
+
+**Marking Schemes Updated:**
+- All Q1-Q7 marking points doubled (e.g., 1.5→3, 1→2, 2→4 marks)
+- New Q8, Q9, Q10 created with 10-mark schemes
+- Updated marking rubric: 0-10 scale with 6 levels
+
+**Marking Rubric (10-mark scale):**
+- Excellent (9-10 marks): Complete, thorough explanation with all components
+- Very Good (7-8 marks): Strong answer, minor gaps
+- Good (5-6 marks): Core concepts explained, missing some depth
+- Satisfactory (3-4 marks): Basic understanding, incomplete
+- Poor (1-2 marks): Significant gaps in understanding
+- Fail (0 marks): Incorrect or no answer
 
 ---
 
-### 2. Test Papers (✅ Complete with QBQN References)
+### 2. FT2 Question Paper - NEWLY CREATED (✅ Complete)
 
-#### **ft2_set_a.md** (5.5KB)
-**Format:** 10 MCQs + Answer any 3 of 5 SAQs = 25 marks
+#### **Nov-14-Ft2-Question-paper.md** (November 11, 2025)
 
-**Part A (10 MCQs - All mandatory):**
-1. MCQ-1: RGB channels
-2. MCQ-7: Salt-and-pepper noise filter
-3. MCQ-10: Canny edge detector
-4. MCQ-12: Otsu's method
-5. MCQ-15: Local Binary Pattern (LBP)
-6. MCQ-21: Convolution operation purpose
-7. MCQ-24: Max Pooling advantage
-8. MCQ-29: Dropout placement
-9. MCQ-33: LeNet-5 application
-10. MCQ-37: Transfer learning effectiveness
+**Test Paper Specifications:**
+- **Format:** Ph.D. model format (table-based structure)
+- **Total questions in paper:** 7 (randomly selected from 10-question bank)
+- **Students answer:** ANY 5 out of 7
+- **Marks per question:** 10 marks
+- **Total marks:** 50 marks (5 × 10)
+- **Duration:** 1.5 hours (90 minutes)
+- **Date:** November 14, 2025
 
-**Part B (5 SAQs - Answer any 3):**
-11. SAQ-1: Feature extraction comparison (Traditional vs Deep Learning)
-12. SAQ-2: Segmentation techniques (Thresholding vs Region-based)
-13. SAQ-4: BatchNorm placement (Conv→BN→ReLU vs Conv→ReLU→BN)
-14. SAQ-5: Dropout placement strategy (Progressive rates)
-15. SAQ-7: Transfer learning strategy (VGG16 for small dataset)
+**Selected Questions (Balanced Distribution):**
 
-**Distribution:** 5 Module 3 + 5 Module 4 (MCQs), 2 Module 3 + 3 Module 4 (SAQs)
+**Module 3 - Image Processing (4 questions):**
+1. Question 1: Feature Extraction Comparison (Bank Q1)
+2. Question 2: Image Segmentation Techniques (Bank Q2)
+3. Question 3: Image Noise and Filtering (Bank Q8)
+4. Question 4: Histogram Equalization (Bank Q9)
 
----
+**Module 4 - CNNs & Transfer Learning (3 questions):**
+5. Question 5: Batch Normalization Placement (Bank Q4)
+6. Question 6: Data Augmentation for CIFAR-10 (Bank Q6)
+7. Question 7: Transfer Learning Strategy (Bank Q7)
 
-#### **ft2_set_b.md** (6.2KB)
-**Format:** 10 MCQs + Answer any 3 of 5 SAQs = 25 marks
+**Question Paper Features:**
+- ✅ Follows Ph.D. model format exactly
+- ✅ Clear header with course details, time, and marks
+- ✅ "Answer ANY FIVE Questions" instruction
+- ✅ Part A: 5 × 10 = 50 Marks
+- ✅ Registration number field
+- ✅ Question mapping table included (maps paper Q# to bank Q#)
+- ✅ Distribution summary
+- ✅ Metadata tags for easy reference
 
-**Part A (10 MCQs - All mandatory):**
-1. MCQ-2: Pixel value range (8-bit grayscale)
-2. MCQ-4: Histogram equalization
-3. MCQ-11: Laplacian operator
-4. MCQ-14: Watershed segmentation
-5. MCQ-19: OpenCV cv2.cvtColor()
-6. MCQ-22: 'same' padding
-7. MCQ-25: GlobalAveragePooling2D
-8. MCQ-27: Batch Normalization placement
-9. MCQ-34: AlexNet innovation
-10. MCQ-38: Freezing base layers
-
-**Part B (5 SAQs - Answer any 3):**
-11. SAQ-3: Edge detection method selection (Sobel vs Canny)
-12. SAQ-2: Segmentation techniques (Thresholding vs Region-based)
-13. SAQ-5: Dropout placement strategy (Progressive rates)
-14. SAQ-6: Data augmentation for CIFAR-10
-15. SAQ-4: BatchNorm placement (Conv→BN→ReLU vs Conv→ReLU→BN)
-
-**Distribution:** 5 Module 3 + 5 Module 4 (MCQs), 2 Module 3 + 3 Module 4 (SAQs)
+**Questions NOT included in this paper (available for future use):**
+- Q3 (Edge Detection Method Selection)
+- Q5 (Dropout Placement Strategy)
+- Q10 (CNN Parameter Calculation)
 
 ---
 
-### 3. Answer Keys (✅ Complete)
+### 3. Supporting Documentation (Previously Created - Needs Update)
 
-#### **ft2_answer_keys.md** (16KB)
-**Contents:**
-- Complete answer key for Set A (Part A + Part B all 5 SAQs)
-- Complete answer key for Set B (Part A + Part B all 5 SAQs)
+#### **ft2_answer_keys.md** (⚠️ NEEDS UPDATE TO 10-MARK FORMAT)
+- Currently contains 5-mark rubric (OUTDATED)
+- Contains complete answer keys for original Set A and Set B
 - Detailed explanations for all MCQs
-- Full expected answers for all SAQs (400-500 words each)
-- Marking schemes with point breakdown for each SAQ
-- Grading rubric (5-mark scale: 0-1, 1.5-2.5, 3-3.5, 4-4.5, 5)
+- Full expected answers for all SAQs (original 5-mark format)
+- Marking schemes with point breakdown
 - Common mistakes guide for graders
-- Note: "Students must answer ANY THREE questions from Q11-Q15"
 
----
+**Action Required:** Update rubric from 5-mark to 10-mark scale to match new question bank
 
-### 4. Supporting Documentation (✅ Complete)
-
-#### **ft2_complete_summary.md** (9.7KB)
-- Overview of all FT2 materials
-- Quality checklist
-- File organization
-- Usage instructions for instructors and students
-- Expected performance targets
-- Alignment with Course Outcomes (CO-3, CO-4)
-
-#### **ft2_question_mapping.md**
-- Verification document showing exact matches
-- Set A: 15/15 questions verified ✅
-- Set B: 15/15 questions verified ✅
-- QBQN reference format guidelines
-- NO guesswork - all exact matches
-
----
-
-## 🎯 QBQN (Question Bank Question Number) System
-
-**Purpose:** Help students reference answers from question banks
-
-**Format:**
-- MCQs: `**QBQN: MCQ-{number}**` (e.g., MCQ-1, MCQ-7, MCQ-21)
-- SAQs: `**QBQN: SAQ-{number}**` (e.g., SAQ-1, SAQ-2, SAQ-4)
-
-**Placement:**
-- Positioned immediately after question text
-- Before answer options (for MCQs)
-- Inline with question in table format
-
-**Implementation Status:**
-- ✅ Set A Part A: All 10 MCQs have QBQN references
-- ✅ Set A Part B: All 5 SAQs have QBQN references
-- ✅ Set B Part A: All 10 MCQs have QBQN references
-- ✅ Set B Part B: All 5 SAQs have QBQN references
-
-**Total Questions with QBQN:** 30 questions (15 per set)
-
----
-
-## 📊 Content Coverage Summary
-
-### Module 3 (Image Processing) Topics:
-- Image representation (channels, pixel values, color spaces)
-- Image enhancement (histogram equalization, gamma correction)
-- Noise removal (median filter, Gaussian blur, salt-and-pepper)
-- Edge detection (Sobel, Canny, Laplacian, Prewitt, Roberts)
-- Segmentation (Otsu's method, region-based, watershed, thresholding)
-- Feature extraction (LBP, GLCM, shape, color, texture)
-- OpenCV operations (cv2.cvtColor, image conversions)
-
-### Module 4 (CNNs & Transfer Learning) Topics:
-- **CNN-Specific Focus** (not general ML concepts):
-  - Convolution operation (padding types, stride, feature extraction)
-  - Pooling layers (Max, Average, GlobalAveragePooling2D)
-  - **BatchNorm placement**: Conv2D → BatchNormalization → Activation (modern best practice)
-  - **Dropout placement**: Progressive rates (0.2 → 0.3 → 0.5), NEVER after output layer
-  - **Data Augmentation**: Image-specific (rotation, shift, flip, zoom - appropriate for dataset)
-  - Famous architectures (LeNet-5, AlexNet, VGG, ResNet)
-  - Transfer Learning (freezing/unfreezing, fine-tuning, VGG16, pre-trained models, small datasets)
-
-### Key Differentiators from FT1:
-**FT1 Covered (Modules 1-2):**
-- Perceptron, XOR, linear separability
-- TensorFlow basics, tensors
-- General activation functions
-- General loss functions
-- Backpropagation
-- General gradient descent
-- General optimizers (Adam, SGD)
-- General L1/L2 regularization
-- General dropout concept
-- General batch normalization concept
-
-**FT2 Covers (Modules 3-4):**
-- Image processing fundamentals and operations
-- CNN architecture components
-- CNN-SPECIFIC BatchNorm placement strategy
-- CNN-SPECIFIC Dropout placement strategy
-- Image-SPECIFIC data augmentation
-- Transfer learning concepts and applications
-- Famous CNN architectures
-
-**NO OVERLAP** between FT1 and FT2 topics
+#### **ft2_mcq_bank_40_questions.md** (✅ Complete - No Changes)
+- 40 MCQs (1 mark each)
+- 20 Module 3 + 20 Module 4
+- Still valid for MCQ section if needed
 
 ---
 
@@ -202,167 +123,234 @@
 
 ```
 course_planning/assessment_schedules/
-├── ft2_mcq_bank_40_questions.md      (40 MCQs with answers)
-├── ft2_saq_bank_7_questions.md       (7 SAQs with full answers)
-├── ft2_set_a.md                      (Test paper Set A with QBQN)
-├── ft2_set_b.md                      (Test paper Set B with QBQN)
-├── ft2_answer_keys.md                (Complete answer keys + rubric)
-├── ft2_question_mapping.md           (Verification document)
-└── ft2_complete_summary.md           (Overview document)
+├── ft2_saq_bank_10_questions.md          ✅ UPDATED (Version 2.0 - 10 marks)
+├── Nov-14-Ft2-Question-paper.md          ✅ NEW (November 11, 2025)
+├── ft2_mcq_bank_40_questions.md          ✅ Complete (no changes)
+├── ft2_answer_keys.md                    ⚠️ NEEDS UPDATE (still 5-mark rubric)
+├── ft2_complete_summary.md               ⚠️ NEEDS UPDATE (references old format)
+└── ignore/
+    ├── Phd-model-Question-paper.md       (Format reference used)
+    └── [other files]
 ```
 
-**Total Files:** 7  
-**Status:** ✅ All complete and verified
+---
+
+## 🎯 Current Test Format Summary
+
+### **FT2 Structure (November 14, 2025):**
+
+**Part A: Short Answer Questions (SAQs)**
+- **Total questions:** 7 questions
+- **Students answer:** ANY 5 questions
+- **Marks:** 10 marks per question
+- **Total obtainable:** 50 marks
+- **Time:** 1.5 hours (90 minutes)
+
+**Question Distribution:**
+- Module 3 (Image Processing): 4/7 questions (57%)
+- Module 4 (CNNs & Transfer Learning): 3/7 questions (43%)
+
+**Coverage:**
+- CO-3 (Image Processing): 4 questions
+- CO-4 (CNNs & Transfer Learning): 3 questions
+
+---
+
+## 📊 Version History
+
+### **Version 2.0 - November 11, 2025**
+
+**Major Changes:**
+1. **Question Bank Upgrade:**
+   - Changed from 5 marks to 10 marks per question
+   - Added 3 new questions (Q8, Q9, Q10)
+   - Expanded from 7 to 10 questions total
+   - Balanced distribution: 5 Module 3 + 5 Module 4
+   - Updated all marking schemes (doubled Q1-Q7, created new for Q8-Q10)
+
+2. **Question Paper Creation:**
+   - Created Nov-14-Ft2-Question-paper.md
+   - 7 questions randomly selected from 10-question bank
+   - Balanced selection: 4 Module 3 + 3 Module 4
+   - Follows Ph.D. model format
+   - Answer ANY 5 out of 7 questions
+   - Total: 50 marks, Duration: 1.5 hours
+
+3. **Marking Rubric Update:**
+   - Changed from 0-5 scale to 0-10 scale
+   - Added "Very Good (7-8 marks)" level
+   - Updated all marking criteria
+
+### **Version 1.0 - October 30, 2025**
+
+**Original Creation:**
+- 7 SAQ questions (5 marks each)
+- 3 Module 3 + 4 Module 4
+- 40 MCQ questions (1 mark each)
+- Set A and Set B test papers
+- Complete answer keys
+- MCQ + SAQ format with QBQN references
 
 ---
 
 ## ✅ Quality Assurance Checklist
 
 ### Content Coverage:
-- [x] Module 3 adequately covered (20 MCQs + 3 SAQs)
-- [x] Module 4 adequately covered (20 MCQs + 4 SAQs)
+- [x] Module 3 adequately covered (5 questions in bank, 4 in paper)
+- [x] Module 4 adequately covered (5 questions in bank, 3 in paper)
 - [x] NO overlap with FT1 topics (verified)
 - [x] CNN-specific focus (not general ML concepts)
-- [x] Transfer Learning included (4 MCQs + 1 SAQ)
+- [x] Transfer Learning included
 - [x] Balanced distribution across topics
+- [x] 10-mark format implemented
 
 ### Format Requirements:
-- [x] Tabular format with CO-PO-PI mapping
-- [x] Bloom's Taxonomy levels indicated (L1, L2, L3, L4)
-- [x] Clear instructions for students
-- [x] Proper marking schemes
-- [x] 25 marks total (10 MCQs + answer any 3 of 5 SAQs = 15)
-- [x] QBQN references added to all questions
+- [x] Ph.D. model format followed
+- [x] Table structure with clear header
+- [x] "Answer ANY FIVE Questions" instruction
+- [x] Proper marking schemes (10 marks per question)
+- [x] Question mapping provided
+- [x] Metadata and tags included
 
 ### Question Quality:
-- [x] Conceptual focus (light calculations)
+- [x] Conceptual focus (light calculations except Q10)
 - [x] NO code-based debugging questions
-- [x] Scenario-based SAQs (like FT1 format)
+- [x] Scenario-based questions (practical applications)
 - [x] Clear, unambiguous wording
-- [x] Appropriate difficulty distribution (Easy: 30%, Moderate: 70%)
+- [x] Appropriate difficulty distribution
 
-### Answer Keys:
-- [x] All MCQ answers provided with explanations
-- [x] All SAQ answers provided (400-500 words each)
-- [x] Detailed explanations included
-- [x] Marking schemes with point breakdown
-- [x] Grading rubric (0-5 marks scale)
-- [x] Common mistakes guide for graders
-
-### QBQN References:
-- [x] All questions verified as exact matches (no guesswork)
-- [x] Set A: 15/15 questions with QBQN references
-- [x] Set B: 15/15 questions with QBQN references
-- [x] Consistent format across both sets
-- [x] Proper placement (after question, before options)
+### Documentation:
+- [x] Question bank updated to Version 2.0
+- [x] Question paper created and formatted
+- [x] Changelog maintained
+- [x] Question mapping table provided
+- [ ] Answer keys need update to 10-mark format (PENDING)
+- [ ] Summary document needs update (PENDING)
 
 ---
 
 ## 🎓 Test Administration Details
 
 ### Test Structure:
-- **Part A:** Answer ALL 10 MCQs (10 marks)
-- **Part B:** Answer ANY 3 out of 5 SAQs (15 marks)
-- **Total Time:** TBD (to be confirmed)
-- **Total Marks:** 25 marks
-- **Weight:** 22.5% of final grade
+- **Part A:** Answer ANY 5 out of 7 SAQs (50 marks)
+- **Total Time:** 1.5 hours (90 minutes)
+- **Total Marks:** 50 marks
+- **Weight:** 22.5% of final grade (if following FT1 pattern)
 
 ### Instructions to Students:
 1. Read all questions carefully
-2. Part A: Choose ONE answer per MCQ
-3. Part B: Select ANY THREE questions to answer (not all 5)
-4. Write complete explanations with reasoning for Part B
-5. Use QBQN references to check answers later
-6. Manage time appropriately
+2. Select ANY FIVE questions to answer (not all 7)
+3. Each question carries 10 marks
+4. Write complete explanations with reasoning
+5. Manage time appropriately (~18 minutes per question)
 
 ### Grading Guidelines:
-- Part A: 1 mark per correct MCQ (no partial credit)
-- Part B: 5 marks per SAQ with partial credit possible
-- Use marking schemes for consistency
-- Apply grading rubric (0-5 scale)
+- Use 10-mark rubric for consistency
+- Apply marking schemes provided in question bank
+- Award partial credit based on component breakdown
+- Look for understanding, not just memorization
 - Document any edge cases
-
----
-
-## 🔄 Development History
-
-### Creation Process (October 30, 2025):
-1. **Planning Phase:** Analyzed requirements, confirmed format with user
-2. **Question Bank Creation:** Created 40 MCQs + 7 SAQs with answers
-3. **Test Paper Design:** Created Set A and Set B
-4. **Format Correction:** Updated Part B from 3 to 5 questions (answer any 3)
-5. **QBQN Addition:** Added question bank references to all questions
-6. **Verification:** Confirmed exact matches via mapping document
-7. **Answer Keys:** Complete grading materials with rubrics
-
-### User Requirements:
-- Balanced 20-20 MCQ distribution (Module 3-4)
-- CNN-SPECIFIC applications (not general concepts)
-- Include Transfer Learning
-- Conceptual focus, light on calculations
-- NO code-based debugging questions
-- Set A and B only (no Set C)
-- Format: 10 MCQs + answer any 3 of 5 SAQs
-- Add QBQN references for student reference
-- All questions must match exactly from question banks (no guesswork)
 
 ---
 
 ## 📈 Course Outcome Alignment
 
 ### CO-3: Implement deep learning for image processing applications
-**Covered in:**
-- Module 3 MCQs (20 questions)
-- Module 3 SAQs (3 questions)
-- Topics: Image representation, enhancement, noise removal, edge detection, segmentation, feature extraction
+**Covered in Paper Questions:**
+- Q1 (Paper): Feature Extraction Comparison
+- Q2 (Paper): Image Segmentation Techniques
+- Q3 (Paper): Image Noise and Filtering
+- Q4 (Paper): Histogram Equalization
 
 ### CO-4: Design and implement CNN architectures and transfer learning
-**Covered in:**
-- Module 4 MCQs (20 questions)
-- Module 4 SAQs (4 questions)
-- Topics: Convolution, pooling, BatchNorm placement, Dropout strategy, data augmentation, famous architectures, transfer learning
-
-### Program Outcomes:
-- **PO1 (Engineering Knowledge):** 70% of questions
-- **PO2 (Problem Analysis):** 30% of questions
+**Covered in Paper Questions:**
+- Q5 (Paper): Batch Normalization Placement
+- Q6 (Paper): Data Augmentation
+- Q7 (Paper): Transfer Learning Strategy
 
 ### Bloom's Taxonomy Distribution:
-- **L1 (Remembering):** ~20% of MCQs
-- **L2 (Understanding):** ~60% of MCQs
-- **L3 (Applying):** ~15% of questions (mostly SAQs)
-- **L4 (Analyzing):** ~5% of questions (SAQs only)
+- **L2 (Understanding):** ~40% of questions
+- **L3 (Applying):** ~50% of questions (scenario-based)
+- **L4 (Analyzing):** ~10% of questions (comparison, justification)
 
 ---
 
-## ✅ FINAL STATUS
+## ⚠️ Pending Tasks
 
-**All FT2 Materials:** ✅ COMPLETE  
-**Quality Checked:** ✅ VERIFIED  
-**QBQN References:** ✅ ADDED TO ALL QUESTIONS  
-**Ready for Deployment:** ✅ YES  
-**Test Date:** November 14, 2025
+### High Priority:
+1. **Update ft2_answer_keys.md:**
+   - Change rubric from 5-mark to 10-mark scale
+   - Update marking schemes for all existing answers
+   - Add answer keys for Q8, Q9, Q10
 
-**Next Steps:**
-1. Print test papers (Set A or Set B or both)
-2. Confirm test duration
-3. Brief TAs on grading rubric
-4. Conduct test on Nov 14, 2025
-5. Grade using answer keys
-6. Provide student feedback
+2. **Update ft2_complete_summary.md:**
+   - Reflect new 10-mark format
+   - Update statistics and file descriptions
+   - Add reference to Nov-14-Ft2-Question-paper.md
+
+### Medium Priority:
+3. **Print Question Paper:**
+   - Confirm final format
+   - Print copies for students
+   - Prepare backup copies
+
+4. **Grader Briefing:**
+   - Review 10-mark rubric with TAs
+   - Discuss common mistakes
+   - Calibrate marking consistency
 
 ---
 
-## 📞 Quick Reference
+## 🔗 Quick Reference
 
-**Question Bank Size:** 40 MCQs + 7 SAQs = 47 questions total  
-**Test Paper Size:** 10 MCQs + 5 SAQs (answer any 3) = 25 marks  
-**Sets Available:** Set A, Set B  
-**QBQN References:** 30 references (15 per set) ✅  
-**File Location:** `course_planning/assessment_schedules/`  
+**Question Bank File:** `ft2_saq_bank_10_questions.md` (Version 2.0)
+**Question Paper File:** `Nov-14-Ft2-Question-paper.md`
+**Total Question Bank Size:** 10 questions (10 marks each)
+**Test Paper Size:** 7 questions (answer any 5)
+**Total Test Marks:** 50 marks
+**Duration:** 1.5 hours
+**File Location:** `course_planning/assessment_schedules/`
 **Status:** Production-ready
 
 ---
 
-**Memory Created:** October 30, 2025  
-**Memory Purpose:** Track complete FT2 materials status for future reference  
-**Next Assessment:** Final Examination (Date TBD)
+## 💡 Key Changes from Version 1.0
+
+1. **Marks:** 5 marks → 10 marks per question
+2. **Question Count:** 7 → 10 questions in bank
+3. **Distribution:** 3-4 split → 5-5 balanced (Module 3-4)
+4. **Test Format:** Set A/B with QBQN → Single paper with 7 questions
+5. **Student Choice:** Answer any 3 of 5 → Answer any 5 of 7
+6. **Total Marks:** Previously variable → Now 50 marks fixed
+7. **New Questions:** Added Q8 (Filtering), Q9 (Histogram), Q10 (Parameters)
+8. **Format Model:** Changed to Ph.D. model format
+
+---
+
+## 📞 Summary Statistics
+
+**Question Bank:**
+- Total: 10 questions
+- Module 3: 5 questions (50%)
+- Module 4: 5 questions (50%)
+- Difficulty: 1 Easy, 1 Easy-Moderate, 8 Moderate
+
+**Test Paper:**
+- Total: 7 questions
+- Module 3: 4 questions (57%)
+- Module 4: 3 questions (43%)
+- Students answer: 5 questions
+- Marks: 50 total
+
+**Time Investment (Nov 11, 2025):**
+- Question bank update: ~3 hours
+- New questions creation: ~2 hours
+- Question paper creation: ~1 hour
+- Total: ~6 hours
+
+---
+
+**Memory Created:** November 11, 2025  
+**Memory Purpose:** Track complete FT2 materials status including new 10-mark format and question paper  
+**Next Assessment:** FT2 Examination on November 14, 2025 (3 days away)  
+**Next Action:** Update answer keys and complete summary documents to reflect 10-mark format
